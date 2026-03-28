@@ -12,26 +12,7 @@
 <body>
 <h1>Bat Ball Stump Game</h1>
 <button onclick="
-  const userChoiceMsg ='You have choosen Bat';
-  let computerChoice;
-  // This will generate random number between o to 1
-  let randomNumber= Math.random() * 3;
-  
-  if(randomNumber>0 && randomNumber<=1 ){
-      computerChoice= 'Bat';
-   // console.log('computer choice is Bat');
-  }
-  else if(randomNumber>1 && randomNumber<=2){
-      computerChoice='Ball';
-    //console.log('computer choice is Ball');
-
-  }
-  else{
-    computerChoice='Stump';
-    //console.log('computer choice is Stump')
-  }
-  
-
+    generateComputerChoice();
     let resultMsg;
     if(computerChoice==='Bat'){
       resultMsg='Match is tie';
@@ -45,35 +26,14 @@
       resultMsg='Computer has won';
 
     }
-    alert(`You have choosen Bat. computerChoice is ${computerChoice} and ${resultMsg}`);
-
+    alert(`You have choosen Bat.computerChoice is ${computerChoice} and ${resultMsg}`);
   
- // console.log(`computer choice is ${computerChoice}`);
   ">Bat</button>
 
 
 
     <button onclick=" 
-     const userChoiceMsg='You have choosen Ball';
-  let computerChoice;
-  // This will generate random number between o to 1
-  let randomNumber= Math.random() * 3;
-  
-  if(randomNumber>0 && randomNumber<=1 ){
-      computerChoice= 'Bat';
-   // console.log('computer choice is Bat');
-  }
-  else if(randomNumber>1 && randomNumber<=2){
-      computerChoice='Ball';
-    //console.log('computer choice is Ball');
-
-  }
-  else{
-    computerChoice='Stump';
-    //console.log('computer choice is Stump')
-  }
-  
-
+    generateComputerChoice();
     let resultMsg;
     if(computerChoice==='Ball'){
       resultMsg='Match is tie';
@@ -89,33 +49,11 @@
     }
     alert(`You have choosen Ball. computerChoice is ${computerChoice} and ${resultMsg}`);
     
-    
-    
-    
-    
     ">Ball</button>
 
-    <button onclick=" const userChoiceMsg='You have choosen Stump';
-  let computerChoice;
-  // This will generate random number between o to 1
-  let randomNumber= Math.random() * 3;
-  
-  if(randomNumber>0 && randomNumber<=1 ){
-      computerChoice= 'Bat';
-   // console.log('computer choice is Bat');
-  }
-  else if(randomNumber>1 && randomNumber<=2){
-      computerChoice='Ball';
-    //console.log('computer choice is Ball');
-
-  }
-  else{
-    computerChoice='Stump';
-    //console.log('computer choice is Stump')
-  }
-  
-
-    let resultMsg;
+    <button onclick="
+    generateComputerChoice();
+    let  resultMsg;
     if(computerChoice==='Ball'){
       resultMsg='Computer won match';
 
@@ -130,18 +68,26 @@
     }
     alert(`You have choosen Stump. computerChoice is ${computerChoice} and ${resultMsg}`);
 
-
-
     ">Stump</button> 
 
 
   <script>
-   // document.writeln('helloooooo'); 
-    
-
-
-
-  </script>
+    let computerChoice;
+    function generateComputerChoice() {     
+  // This will generate random number between o to 1
+  let randomNumber= Math.random() * 3;
   
+  
+  if(randomNumber>0 && randomNumber<=1 ){
+      computerChoice= 'Bat';
+  }
+  else if(randomNumber>1 && randomNumber<=2){
+      computerChoice='Ball';
+  }
+  else{
+    computerChoice='Stump';   
+  }
+    }
+  </script>
 </body>
 </html>
