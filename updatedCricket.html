@@ -1,45 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <style>
-    body{
-      text-align: center;
-    }
-  </style>
-  
-  <title>CricketGame</title>
+    <title>  CricketGame </title>
+    <link rel="stylesheet" href="updatedCricket.css">
 </head>
 <body>
-  <h1>Bat Ball Stump Game</h1>
+  <h1 id="header12">Bat Ball Stump Game</h1>
 
-  <button onclick="
+  
+
+  <button  class="choice-button" onclick="
   let computerChoice=generateComputerChoice();
   let resultMsg= getResult('Bat', computerChoice);
   showResult('Bat', computerChoice, resultMsg);
-  ">Bat</button>
+  "><img src="IMGcricket/bat.png" alt="Bat-image" class="choice-image">
+  </button>
 
-  <button onclick=" computerChoice=generateComputerChoice();
+  <button  class="choice-button" onclick=" computerChoice=generateComputerChoice();
   resultMsg=getResult('Ball', computerChoice);
   showResult('Ball', computerChoice, resultMsg);
-  ">Ball</button>
+  "><img src="IMGcricket/ball.png" alt="Ball-image" class="choice-image">
+  </button>
 
-  <button onclick=" computerChoice=generateComputerChoice();
+  <button  class="choice-button" onclick=" computerChoice=generateComputerChoice();
   resultMsg=getResult('Stump', computerChoice);
   showResult('Stump', computerChoice, resultMsg);
   
-  ">Stump</button>
+  "><img src="IMGcricket/stump.png" alt="Stump-img" class="choice-image">
+  </button>
+
+  
+
+  <h3 id="user-move"></h3> 
+  <h3 id="computer-move"></h3>
+  <h3 id="result"></h3>
+  <h3 id="score"></h3>
+
+  <button class="reset-button" onclick="localStorage.clear()
+  resetScore(); 
+  "> Reset </button>
 
   <script>
-    let score={
+    let scoreStr=localStorage.getItem('Score');
+    let  score;
+    resetScore(scoreStr);
+
+    function resetScore(scoreStr){
+      score= scoreStr? JSON.parse(scoreStr): {
       win: 0,
       lost:0,
       tie: 0,
-      //ANONYMOUS METHOD
-      displayScore: function(){ return `Number of Matches won: ${score.win}, lost: ${score.lost}, tie: ${score.tie}`;
-      }
-
     };
+    
+      score.displayScore=  function(){ 
+        return `score: won: ${score.win}, lost: ${score.lost}, tie: ${score.tie}`;
+      };
 
+      showResult();
+
+    }
 
     function generateComputerChoice(){
       let randomNumber=Math.random()*3;
@@ -95,17 +114,17 @@
     }
 
     function showResult(userMove,computerMove,result){
-      //console.log(score);
-      alert(`You have choosen ${userMove}.computer choice is ${computerMove} 
-      and ${result}
+      localStorage.setItem('Score',JSON.stringify(score));
+      document.querySelector('#user-move').innerText=userMove? `You have choosen ${userMove}`:'';
 
-      ${score.displayScore()};
+      document.querySelector('#computer-move').innerText=computerMove? `computer choice is ${computerMove} `:''; // ('')=> Empty String
 
-      `);
+      document.querySelector('#result').innerText=result||
+      '';
+      document.querySelector('#score').innerText=score.displayScore();
+
+      
     }
-
-
-  
   </script>
 </body>
 </html>
